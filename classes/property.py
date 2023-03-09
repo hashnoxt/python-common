@@ -1,47 +1,25 @@
+class House:
 
-class Human:
+	def __init__(self, price):
+		self._price = price
 
-    Name = 'Dave Willson'
+	@property
+	def price(self):
+		return self._price
+	
+	@price.setter
+	def price(self, new_price):
+		if new_price > 0 and isinstance(new_price, float):
+			self._price = new_price
+		else:
+			print("Please enter a valid price")
 
-    def __init__(self, name):
-        self.name = name
-        self._age = 0
+	@price.deleter
+	def price(self):
+		del self._price
 
-    def say(self, msg):
-        return f'Fire {msg} Flying'
+i = House(price= 15)
 
-    @classmethod
-    def get_name(cls):
-        return cls.Name
+i.price = 55.0
 
-    @staticmethod
-    def get_age():
-        return 12
-
-    @property
-    def test_prop(self):
-        return self._age 
-
-
-    @test_prop.setter
-    def test_prop(self,age):
-        self._age = age 
-    
-    @test_prop.deleter
-    def test_prop(self,age):
-        del self._age
-
-i = Human('New Human')
-
-x = i.say('is')
-
-cls_Name = i.get_name()
-cls_age = i.get_age()
-
-i.test_prop = 5
-
-print(i.test_prop)
-
-del i.test_prop
-
-print(i.test_prop)
+print(i.price)
